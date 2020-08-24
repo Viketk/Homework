@@ -15,4 +15,6 @@ public class HWTask1 {
         int expected = -2;
         assertEquals(actual, expected);
     }
+
 }
+
