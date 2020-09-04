@@ -45,6 +45,7 @@ public class PO_Homework {
             String actualText = good.getText();
             String expectedText = "iphone";
             assertEquals(actualText.contains("iPhone"), expectedText);
+            //System.out.println("qq");
 
 
         }
