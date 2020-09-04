@@ -44,9 +44,7 @@ public class PO_Homework {
         for (WebElement good : goods) {
             String actualText = good.getText();
             String expectedText = "iphone";
-
-            System.out.println(actualText.contains("iPhone"));
-            assertEquals(actualText,expectedText);
+            assertEquals(actualText.contains("iPhone"),expectedText);
 
 
 
