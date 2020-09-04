@@ -14,6 +14,8 @@ import test.java.pages.HomePage;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static org.testng.Assert.assertEquals;
+
 public class PO_Homework {
     WebDriver driver;
     HomePage homePage;
@@ -41,9 +43,11 @@ public class PO_Homework {
         List<WebElement> goods = driver.findElements(By.cssSelector("span.goods-tile__title"));
         for (WebElement good : goods) {
             String actualText = good.getText();
-            //String expectedText = "iPhone";
+            String expectedText = "iphone";
 
-            System.out.println(actualText);
+            System.out.println(actualText.contains("iPhone"));
+            assertEquals(actualText,expectedText);
+
 
 
         }
