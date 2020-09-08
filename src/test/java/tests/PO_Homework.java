@@ -32,9 +32,10 @@ public class PO_Homework {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.MILLISECONDS);
-        wait  = new WebDriverWait(driver, 10 , 550 );
+        wait = new WebDriverWait(driver, 10, 550);
         homePage = new HomePage(driver);
-        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
     }
 
     @Test
@@ -51,13 +52,31 @@ public class PO_Homework {
             String actualText = good.getText();
             assertTrue(actualText.contains("iPhone"));
             //System.out.println("qq");
-
-
-
         }
     }
-    @AfterMethod
-    public void tearDown() {
-        driver.quit();
+
+
+        @Test
+        public void test2 () throws InterruptedException {
+            homePage.open();
+            homePage.clickInput();
+            WebElement inputButtons = driver.findElement(By.xpath("//input[@class = 'search-form__input ng-untouched ng-pristine ng-valid']"));
+            inputButtons.sendKeys("Samsung");
+            inputButtons.sendKeys(Keys.ENTER);
+            //Thread.sleep(8000);
+
+            List<WebElement> gods = driver.findElements(By.cssSelector("span.goods-tile__title"));
+            for (WebElement good : gods) {
+                String actualText = good.getText();
+                assertTrue(actualText.contains("Samsung"));
+                //System.out.println("qq");
+            }
+        }
+
+
+        @AfterMethod
+        public void tearDown () {
+            driver.quit();
+        }
     }
-}
+
